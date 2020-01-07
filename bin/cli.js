@@ -28,6 +28,7 @@ program
 	.option('--webpack-config <file>', 'path to webpack config')
 	.option('--ts-config <file>', 'path to typescript config')
 	.option('--include-npm', 'include shallow NPM modules', false)
+	.option('--npm-depth <level>', 'indicate npm dependencies depth')
 	.option('--no-color', 'disable color in output and image', false)
 	.option('--no-spinner', 'disable progress spinner', false)
 	.option('--stdin', 'read predefined tree from STDIN', false)
@@ -104,6 +105,10 @@ if (program.tsConfig) {
 
 if (program.includeNpm) {
 	config.includeNpm = program.includeNpm;
+}
+
+if (program.npmDepth) {
+	config.npmDepth = program.npmDepth;
 }
 
 if (!program.color) {

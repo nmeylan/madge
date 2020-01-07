@@ -22,6 +22,9 @@ desc "CIRCULAR (FOUND)"
 desc "NPM"
 ./bin/cli.js test/cjs/npm.js --include-npm
 
+desc "DEPTH NPM"
+./bin/cli.js test/cjs/npm.js --include-npm --npm-depth 1
+
 desc "STDIN"
 ./bin/cli.js --json lib/api.js | tr '[a-z]' '[A-Z]' | ./bin/cli.js --stdin
 

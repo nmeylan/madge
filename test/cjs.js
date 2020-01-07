@@ -75,4 +75,17 @@ describe('CommonJS', () => {
 			done();
 		}).catch(done);
 	});
+	it('can include 1 level nested dependencies NPM modules', (done) => {
+		madge(dir + '/nestedNpm.js', {
+			includeNpm: true,
+			npmDepth: 1
+		}).then((res) => {
+			res.obj().should.eql({
+				'nestedNpm.js': ['node_modules/nested.js', 'normal/d.js'],
+				'node_modules/nested.js': ['node_modules/n/index.js'],
+				'normal/d.js': []
+			});
+			done();
+		}).catch(done);
+	});
 });
